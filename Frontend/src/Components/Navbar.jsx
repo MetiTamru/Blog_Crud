@@ -9,7 +9,7 @@ const Navbar = () => {
         <NavLink
           to="/home"
           className={({ isActive }) =>
-            `text-white px-4 py-2 rounded-md ${isActive ? 'bg-gray-700' : 'hover:bg-gray-600'}`
+            `text-white px-4 py-2 rounded-md ${isActive ? 'bg-teal-700' : 'hover:bg-teal-600'}`
           }
         >
           Home
@@ -17,7 +17,7 @@ const Navbar = () => {
         <NavLink
           to="/add"
           className={({ isActive }) =>
-            `text-white px-4 py-2 rounded-md ${isActive ? 'bg-gray-700' : 'hover:bg-gray-600'}`
+            `text-white px-4 py-2 rounded-md ${isActive ? 'bg-teal-700' : 'hover:bg-teal-600'}`
           }
         >
           Add Blog

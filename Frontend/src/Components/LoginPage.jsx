@@ -63,24 +63,23 @@ const LoginPage = ({ setIsLoggedIn }) => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 mb-4 w-full rounded"
+        className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 mb-6 w-full rounded"
-        />
+          className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"        />
         {passwordErr && (<p className='text-red-500 mb-3'>{passwordErr}</p>)}
         <button
           onClick={handleLogin}
-          className="bg-blue-500 text-white p-2 rounded w-full hover:bg-blue-600 transition duration-300 mb-5"
+          className="bg-teal-500 text-white p-2 rounded w-full hover:bg-teal-600 transition duration-300 mb-5"
         >
           Login
         </button>
         <p>Create and account?
-        <Link to={"/signup"} className='text-blue-500 ml-3' >SignUp</Link>
+        <Link to={"/signup"} className='text-teal-500 ml-3' >SignUp</Link>
         </p>
       </div>
     </div>

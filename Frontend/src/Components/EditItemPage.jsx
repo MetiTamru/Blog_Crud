@@ -82,7 +82,7 @@ const EditItemPage = () => {
         <div className="flex justify-end">
           <button
             onClick={handleUpdate}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300"
+            className="bg-teal-600 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-teal-700 transition duration-300"
           >
             Update Item
           </button>

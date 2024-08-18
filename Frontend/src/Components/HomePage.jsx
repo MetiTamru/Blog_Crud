@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axiosInstance from './Axios';
 
-
-
 const HomePage = () => {
   const [items, setItems] = useState([]);
 
@@ -15,7 +13,6 @@ const HomePage = () => {
     try {
       const response = await axiosInstance.get('/posts');
       const sortedPosts = response.data.reverse();
-
       setItems(sortedPosts);
     } catch (error) {
       console.error('Error fetching data', error);
@@ -27,7 +24,7 @@ const HomePage = () => {
     
     if (confirmDelete) {
       try {
-        await axiosInstance.delete(`${"/posts"}/${id}`);
+        await axiosInstance.delete(`/posts/${id}`);
         setItems(items.filter(item => item.id !== id));
       } catch (error) {
         console.error('Error deleting item', error);
@@ -36,35 +33,37 @@ const HomePage = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen p-6">
-      <h1 className="text-3xl font-extrabold text-gray-800 mb-6">Item List</h1>
-      
-      <div className="flex justify-end mb-6">
-        <Link to="/add" className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300">
+    <div className="bg-gray-100 min-h-screen flex flex-col">
+      {/* Header Section */}
+      <header className="bg-gray-900 text-white text-center py-12">
+        <h1 className="text-4xl font-extrabold mb-2">Welcome to Our Blog</h1>
+        <p className="text-lg mb-6">Discover our latest posts and updates below.</p>
+        <Link to="/add" className="bg-teal-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-teal-700 transition duration-300">
           Add New Item
         </Link>
-      </div>
-      
-      <ul className="space-y-4">
-        {items.map(item => (
-          <li key={item.id} className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-300">
-            <div className="flex justify-between items-center p-4">
-              <div className="flex-1">
-                <h2 className="text-2xl font-semibold text-gray-700 mb-2">{item.title}</h2>
-                <p className="text-gray-600">{item.description}</p>
+      </header>
+
+      {/* Content Section */}
+      <main className="flex-1 p-6">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {items.map(item => (
+            <div key={item.id} className="bg-white shadow-xl rounded-lg overflow-hidden border border-gray-300 flex flex-col">
+              <div className="p-6 flex-1">
+                <h2 className="text-2xl font-semibold mb-3 text-gray-800">{item.title}</h2>
+                <p className="text-gray-700 mb-4">{item.description}</p>
               </div>
-              <div className="flex-shrink-0 flex space-x-2">
-                <Link to={`/edit/${item.id}`} className="bg-yellow-500 text-white px-3 py-1 rounded-lg shadow hover:bg-yellow-600 transition duration-300">
+              <div className="flex justify-end gap-3 p-4 border-t border-gray-300">
+                <Link to={`/edit/${item.id}`} className="bg-yellow-500 text-gray-800 px-4 py-1 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300">
                   Edit
                 </Link>
-                <button onClick={() => handleDelete(item.id)} className="bg-red-500 text-white px-3 py-1 rounded-lg shadow hover:bg-red-600 transition duration-300">
+                <button onClick={() => handleDelete(item.id)} className="bg-red-500 text-white px-4 py-1 rounded-lg shadow-lg hover:bg-red-600 transition duration-300">
                   Delete
                 </button>
               </div>
             </div>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      </main>
     </div>
   );
 };

@@ -1,28 +1,40 @@
 import React, { useState } from 'react';
 import axiosInstance from './Axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const AddItemsPage = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleAddItem = async () => {
+    if (!title || !description) {
+      setErrorMessage('Title and description are required.');
+      return;
+    }
+
+    setErrorMessage('');
+    setSuccessMessage('');
+    setLoading(true);
+
     try {
-      const response = await axiosInstance.post('/posts', {
+      await axiosInstance.post('/posts', {
         title,
         description,
-       
+        createdAt: new Date().toISOString(),
       });
       setSuccessMessage('Item added successfully!');
       setTitle('');
       setDescription('');
-      navigate("/home")
+      setTimeout(() => navigate('/home'), 2000); // Delay navigation for success message visibility
     } catch (error) {
       setErrorMessage('Failed to add item. Please try again.');
       console.error('Add item error:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -40,7 +52,7 @@ const AddItemsPage = () => {
             placeholder="Enter the item title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="border border-gray-300 p-3 w-full rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
           />
         </div>
         <div className="mb-6">
@@ -53,20 +65,21 @@ const AddItemsPage = () => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows="4"
-            className="border border-gray-300 p-3 w-full rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
           ></textarea>
         </div>
         <button
           onClick={handleAddItem}
-          className="bg-blue-500 text-white p-3 rounded-md w-full hover:bg-blue-600 transition duration-300"
+          className="bg-teal-600 text-white p-3 rounded-lg w-full hover:bg-teal-700 transition duration-300 disabled:bg-teal-400"
+          disabled={loading}
         >
-          Add Item
+          {loading ? 'Adding...' : 'Add Item'}
         </button>
         {successMessage && (
-          <p className="text-green-600 mt-4">{successMessage}</p>
+          <p className="text-teal-600 mt-4 text-center">{successMessage}</p>
         )}
         {errorMessage && (
-          <p className="text-red-600 mt-4">{errorMessage}</p>
+          <p className="text-red-600 mt-4 text-center">{errorMessage}</p>
         )}
       </div>
     </div>

@@ -60,41 +60,41 @@ const SignUP = ({ setIsLoggedIn }) => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
         <input
           type="password"
           placeholder="Confirm Password"
           value={repassword}
           onChange={(e) => setRePassword(e.target.value)}
-          className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 p-3 mb-4 w-full rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500"
         />
          {passwordErr && (
           <div className="text-red-500 mb-4">{passwordErr}</div>
         )}
         <button
           onClick={handleSignup}
-          className="bg-blue-600 text-white p-3 rounded-lg w-full hover:bg-blue-700 transition duration-300 shadow-md"
+          className="bg-teal-600 text-white p-3 rounded-lg w-full hover:bg-teal-700 transition duration-300 shadow-md"
         >
           Sign Up
         </button>
 
         <p className="mt-6 text-center text-gray-700">
-          Already have an account? <Link className="text-blue-600 hover:underline" to="/">Login</Link>
+          Already have an account? <Link className="text-teal-600 hover:underline" to="/">Login</Link>
         </p>
       </div>
     </div>
