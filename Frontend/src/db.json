@@ -1,0 +1,43 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "First Blog Post",
+      "description": "This is the content of the first blog post."
+    },
+    {
+      "id": "942a",
+      "title": "new ",
+      "description": "sdjbmnads"
+    },
+    {
+      "id": "9d17",
+      "title": "nasdbjk",
+      "description": "madbn"
+    },
+    {
+      "id": "31cb",
+      "title": "meti",
+      "description": "me"
+    },
+    {
+      "id": "d522",
+      "title": "5678asbnd",
+      "description": "hgasdbnx5623478944624"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "meti@gmail.com",
+      "name": "Meti",
+      "password": "meti1234"
+    },
+    {
+      "id": "302f",
+      "email": "Fre@gmail.com",
+      "name": "fre",
+      "password": "fre1234"
+    }
+  ]
+}
